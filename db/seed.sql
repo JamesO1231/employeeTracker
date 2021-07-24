@@ -2,17 +2,10 @@ USE employee_db;
 
 INSERT INTO department (name)
 VALUES 
-    ('Oil and Gas'),
-    ('Title and Lease');
 
 INSERT INTO role
-    (title, salary, department_id)
+    (title, salary, departmentId)
 VALUES
-    ('Landman', 130000, 1),
-    ('Lease Analyst', 100000, 2);
 
-
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (firstName, lastName, roleId, managerId)
 VALUES 
-    ('John', 'Bill',1,NULL),
-    ('Brett', 'Bryan',2,1);

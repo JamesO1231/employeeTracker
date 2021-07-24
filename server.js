@@ -53,8 +53,8 @@ function init() {
   });
 }
 async function viewDepartment() {
-  const department = await dbUtils.viewDepartment();
-  console.table(department);
+  const departments = await dbUtils.viewDepartment();
+  console.table(departments);
   init();
 }
 async function viewRoles() {
@@ -72,14 +72,14 @@ async function addDepartment() {
     {
       type: 'input',
       message: 'What department would you like to add?',
-      name: 'Department'
+      name: 'name'
     }
   ]);
   await dbUtils.createDepartment(department);
   init();
 }
 async function addRole() {
-  const departments = await dbUtils.viewAllDepartments();
+  const departments = await dbUtils.viewDepartment();
   const departmentList = departments.map(({ id, name }) => ({ name: name, value: id }));
   const roleAdded = await inquirer.prompt([
     {
@@ -136,9 +136,9 @@ async function addEmployee() {
         choices: managerChoices,
       }
     ]);
-    employeeToAdd.manager = managerId;
+    employeeToAdd.managerId = managerId;
   }
-employeeToAdd.role = roleId;
+employeeToAdd.roleId = roleId;
 await util.createEmployee(employeeToAdd);
 init();
 }
